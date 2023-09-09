@@ -11,6 +11,7 @@
 
 <body>
 
+    <input type="text" class="form-control" name="nameinput" id="nameid">
    <div id="usercard"></div>
 
    <p>Just text</p>
@@ -38,7 +39,7 @@
    });
 
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData("pear"); 
+      tg.sendData($('#nameid').val()); 
 
    });
 
