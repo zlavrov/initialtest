@@ -11,9 +11,10 @@ $('#usercard').append(`<p>${tg.initDataUnsafe.user.username}</p><p>${tg.initData
 
 $('#savedata').on('click', function() {
 
-		tg.MainButton.setText("Yes");
         nameid = $('#nameid').val();
         contentid = $('#contentid').val();
+
+		tg.MainButton.setText(`Name: ${nameid}, Content: ${contentid}`);
 		tg.MainButton.show();
 });
 
