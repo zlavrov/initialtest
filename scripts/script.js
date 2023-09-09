@@ -18,18 +18,17 @@ $('#savedata').on('click', function() {
 
         tg.MainButton.hide()
     } else {
-        
+
         tg.MainButton.setText(`Name: ${nameid}, Content: ${contentid}`);
         tg.MainButton.show()
     }
 
-    Telegram.WebApp.onEvent('mainButtonClicked', function() {
-        let data = {
-            name: nameid,
-            content: contentid
-        }
-        tg.sendData(data);
-    });
-
 });
 
+Telegram.WebApp.onEvent('mainButtonClicked', function() {
+    let data = {
+        name: nameid,
+        content: contentid
+    }
+    tg.sendData(data);
+});
