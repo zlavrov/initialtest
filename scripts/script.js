@@ -1,34 +1,39 @@
-let tg = window.Telegram.WebApp;
-tg.expand();
+   let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
 
-tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2cab37';
+   tg.expand(); //расширяем на все окно  
 
-let nameid = '';
-let contentid = '';
+   tg.MainButton.text = "Changed Text"; //изменяем текст кнопки 
+   tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
+   tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
+   tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
+   tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры
 
-$('#usercard').append(`<p>${tg.initDataUnsafe.user.username}</p><p>${tg.initDataUnsafe.user.id}</p>`);
+   let btn = document.getElementById("btn"); //получаем кнопку скрыть/показать 
 
-$('#savedata').on('click', function() {
+   btn.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
+      if (tg.MainButton.isVisible){ //если кнопка показана 
+         tg.MainButton.hide() //скрываем кнопку 
+      }
+      else{ //иначе
+         tg.MainButton.show() //показываем 
+      }
+   });
 
-    nameid = $('#nameid').val();
-    contentid = $('#contentid').val();
+   Telegram.WebApp.onEvent('mainButtonClicked', function(){
+      tg.sendData("some string that we need to send"); 
+      //при клике на основную кнопку отправляем данные в строковом виде
+   });
 
-    if (tg.MainButton.isVisible){
 
-        tg.MainButton.hide()
-    } else {
+   let usercard = document.getElementById("usercard"); //получаем блок usercard 
 
-        tg.MainButton.setText(`Name: ${nameid}, Content: ${contentid}`);
-        tg.MainButton.show()
-    }
+   let profName = document.createElement('p'); //создаем параграф
+   profName.innerText = `${tg.initDataUnsafe.user.first_name}
+   ${tg.initDataUnsafe.user.last_name}
+   ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
+   //выдем имя, "фамилию", через тире username и код языка
+   usercard.appendChild(profName); //добавляем 
 
-});
-
-Telegram.WebApp.onEvent('mainButtonClicked', function() {
-    let data = {
-        name: nameid,
-        content: contentid
-    }
-    tg.sendData(data);
-});
+   let userid = document.createElement('p'); //создаем еще параграф 
+   userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
+   usercard.appendChild(userid); //добавляем
