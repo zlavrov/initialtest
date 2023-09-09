@@ -11,14 +11,14 @@
 
 <body>
 
-    <input type="text" class="form-control" name="nameinput" id="nameid">
-   <div id="usercard"></div>
-
-   <p>Just text</p>
-   
-   <a class="link" href="https://zlavrov.github.io/initialtest/">Link</a>
-   
-   <p class="hint">Some little hint</p>
+    <div class="mb-3">
+        <label for="nameid" class="form-label">Name</label>
+        <input type="text" class="form-control" name="nameinput" id="nameid">
+    </div>
+    <div class="mb-3">
+        <label for="contentid" class="form-label">Content</label>
+        <input type="text" class="form-control" name="contentinput" id="contentid">
+    </div>
    
    <button id="btn" class="button">Show/Hide Main Button</button>
 
@@ -39,7 +39,7 @@
    });
 
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData($('#nameid').val()); 
+      tg.sendData({name: $('#nameid').val(), content: $('#contentid').val()}); 
 
    });
 
