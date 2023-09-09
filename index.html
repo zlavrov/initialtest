@@ -49,7 +49,6 @@
    <a class="link" href="https://zlavrov.github.io/initialtest/">Link</a> <!--Просто ссылка для проверки-->
    <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки-->
    <button id="btn" class="button">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
-   <button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной-->
 </body>
 
 <script>
@@ -71,18 +70,6 @@
       }
       else{ //иначе
          tg.MainButton.show() //показываем 
-      }
-   });
-
-   let btnED = document.getElementById("btnED"); //получаем кнопку активировать/деактивировать
-   btnED.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-      if (tg.MainButton.isActive){ //если кнопка показана 
-         tg.MainButton.setParams({"color": "#E0FFFF"}); //меняем цвет
-         tg.MainButton.disable() //скрываем кнопку 
-      }
-      else{ //иначе
-         tg.MainButton.setParams({"color": "#143F6B"}); //меняем цвет
-         tg.MainButton.enable() //показываем 
       }
    });
 
