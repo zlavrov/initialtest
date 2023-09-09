@@ -1,4 +1,9 @@
 let tg = window.Telegram.WebApp;
+tg.expand();
+
+tg.MainButton.textColor = '#FFFFFF';
+tg.MainButton.color = '#2cab37';
+
 let nameid = '';
 let contentid = '';
 
@@ -28,6 +33,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function() {
         content: contentid
     }
 
-    tg.sendData(JSON.stringify(data));
+    // tg.sendData(JSON.stringify(data));
+    tg.sendData('apple');
 });
 
