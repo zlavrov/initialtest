@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Test Telegram WebApps API</title>
    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
-
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
    <style>
       body{
          color: var(--tg-theme-text-color);
@@ -45,6 +45,17 @@
 <body>
    <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
    </div>
+   <form>
+        <div class="mb-3">
+            <label for="nameid" class="form-label">Name</label>
+            <input type="text" class="form-control" name="nameinput" id="nameid">
+        </div>
+        <div class="mb-3">
+            <label for="contentid" class="form-label">Content</label>
+            <input type="text" class="form-control" name="contentinput" id="contentid">
+        </div>
+        <button id="savedata" class="btn btn-primary">Save</button>
+    </form>
    <p>Just text</p> <!--Просто текст для проверки-->
    <a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки-->
    <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки-->
@@ -86,8 +97,14 @@
       }
    });
 
+
+
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData("some string that we need to send"); 
+    let data = {
+        name: $('#nameid').val(),
+        content: $('#contentid').val()
+    }
+      tg.sendData(data); 
       //при клике на основную кнопку отправляем данные в строковом виде
    });
 
