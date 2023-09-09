@@ -11,20 +11,25 @@ $('#usercard').append(`<p>${tg.initDataUnsafe.user.username}</p><p>${tg.initData
 
 $('#savedata').on('click', function() {
 
-        nameid = $('#nameid').val();
-        contentid = $('#contentid').val();
+    nameid = $('#nameid').val();
+    contentid = $('#contentid').val();
 
-		tg.MainButton.setText(`Name: ${nameid}, Content: ${contentid}`);
-		tg.MainButton.show();
-});
+    if (tg.MainButton.isVisible){
 
-Telegram.WebApp.onEvent('mainButtonClicked', function() {
-
-    let data = {
-        name: nameid,
-        content: contentid
+        tg.MainButton.hide()
+    } else {
+        
+        tg.MainButton.setText(`Name: ${nameid}, Content: ${contentid}`);
+        tg.MainButton.show()
     }
 
-    // tg.sendData(JSON.stringify(data));
-    tg.sendData('apple');
+    Telegram.WebApp.onEvent('mainButtonClicked', function() {
+        let data = {
+            name: nameid,
+            content: contentid
+        }
+        tg.sendData(data);
+    });
+
 });
+
