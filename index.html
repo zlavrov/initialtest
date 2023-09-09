@@ -1,47 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Test Telegram WebApps API</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="styles/bootstrap.min.css" rel="stylesheet">
    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+   <title>Order</title>
 </head>
 
 <body>
+    <div class="container">
 
-    <div class="mb-3">
-        <label for="nameid" class="form-label">Name</label>
-        <input type="text" class="form-control" name="nameinput" id="nameid">
-    </div>
-    <div class="mb-3">
-        <label for="contentid" class="form-label">Content</label>
-        <input type="text" class="form-control" name="contentinput" id="contentid">
-    </div>
-   
-   <button id="btn" class="button">Show/Hide Main Button</button>
+        <form>
+            <div class="mb-3">
+                <label for="nameid" class="form-label">Name</label>
+                <input type="text" class="form-control" name="nameinput" id="nameid">
+            </div>
+            <div class="mb-3">
+                <label for="contentid" class="form-label">Content</label>
+                <input type="text" class="form-control" name="contentinput" id="contentid">
+            </div>
+               <button id="savedata" class="btn btn-primary">Save</button>
+        </form>
 
+    </div>
+    <script src="scripts/bootstrap.bundle.min.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
-
-<script>
-   let tg = window.Telegram.WebApp;
-
-   tg.expand();
-
-   tg.MainButton.setText("Changed Text1");
-   tg.MainButton.textColor = "#F55353";
-   tg.MainButton.color = "#143F6B";
-   tg.MainButton.setParams({"color": "#143F6B"});
-
-   $('#btn').on('click', function() {
-    tg.MainButton.show();
-   });
-
-   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData('apples'); 
-
-   });
-
-</script>
 </html>
