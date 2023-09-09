@@ -11,19 +11,10 @@ $('#usercard').append(`<p>${tg.initDataUnsafe.user.username}</p><p>${tg.initData
 
 $('#savedata').on('click', function() {
 
-
-    if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
 		tg.MainButton.setText("Yes");
         nameid = $('#nameid').val();
         contentid = $('#contentid').val();
 		tg.MainButton.show();
-	}
-
-
-
 });
 
 Telegram.WebApp.onEvent('mainButtonClicked', function() {
@@ -36,4 +27,3 @@ Telegram.WebApp.onEvent('mainButtonClicked', function() {
     // tg.sendData(JSON.stringify(data));
     tg.sendData('apple');
 });
-
