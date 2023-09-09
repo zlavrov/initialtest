@@ -1,5 +1,33 @@
 let tg = window.Telegram.WebApp;
+let nameid = '';
+let contentid = '';
 
 $('#usercard').append(`<p>${tg.initDataUnsafe.user.username}</p><p>${tg.initDataUnsafe.user.id}</p>`);
 
-tg.sendData('apple');
+$('#savedata').on('click', function() {
+
+
+    if (tg.MainButton.isVisible) {
+		tg.MainButton.hide();
+	}
+	else {
+		tg.MainButton.setText("Yes");
+        nameid = $('#nameid').val();
+        contentid = $('#contentid').val();
+		tg.MainButton.show();
+	}
+
+
+
+});
+
+Telegram.WebApp.onEvent('mainButtonClicked', function() {
+
+    let data = {
+        name: nameid,
+        content: contentid
+    }
+
+    tg.sendData(JSON.stringify(data));
+});
+
