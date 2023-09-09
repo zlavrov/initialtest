@@ -7,7 +7,7 @@ tg.MainButton.textColor = "#F55353";
 tg.MainButton.color = "#143F6B";
 tg.MainButton.setParams({"color": "#143F6B"});
 
-$('#btn').on('click', function() {
+$('#savedata').on('click', function() {
  tg.MainButton.show();
 });
 
